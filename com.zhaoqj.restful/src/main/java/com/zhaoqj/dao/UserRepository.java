@@ -13,7 +13,7 @@ public class UserRepository implements IUserRepository {
 	
 	public UserRepository() {
 		super();
-		User us1= new User();
+		final User us1= new User();
 		us1.setUserName("Jack");
 		
 		Calendar time =  Calendar.getInstance();
@@ -24,7 +24,7 @@ public class UserRepository implements IUserRepository {
 		
 		us1.setRoleName("manager");
 		
-		User us2= new User();
+		final User us2= new User();
 		us2.setUserName("zhao");
 
 		us2.setBrithday(time.getTime());
@@ -51,7 +51,6 @@ public class UserRepository implements IUserRepository {
 	
 	public String getUserRole(String userName)
 	{
-		System.out.println(userName);
 		for(User item:this.result)
 		{
 			if (item.getUserName().equals(userName))

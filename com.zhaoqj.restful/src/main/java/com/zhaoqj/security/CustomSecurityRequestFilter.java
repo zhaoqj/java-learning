@@ -53,6 +53,7 @@ public class CustomSecurityRequestFilter implements ContainerRequestFilter {
 			@Override
 			public boolean isUserInRole(String role) {
 				// TODO Auto-generated method stub
+				System.out.println("checked");
 				return userSer.checkUserRole(getUserPrincipal().getName(), role);
 			}
 		});

@@ -24,7 +24,8 @@ public class User {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-
+	
+	@RolesAllowed({"manager", "user"})
 	public String getUserName() {
 		return userName;
 	}

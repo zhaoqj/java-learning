@@ -9,7 +9,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+
+
 import com.zhaoqj.dao.UserRepository;
+import com.zhaoqj.entity.RestrictedEntity;
 import com.zhaoqj.entity.User;
 import com.zhaoqj.service.IUserService;
 import com.zhaoqj.service.UserSerivce;
@@ -18,6 +21,7 @@ import com.zhaoqj.service.UserSerivce;
  * Root resource (exposed at "myresource" path)
  */
 @Path("userResource")
+@Produces(MediaType.APPLICATION_XML)
 public class UserResource {
 
     /**
@@ -26,28 +30,22 @@ public class UserResource {
      *
      * @return String that will be returned as a text/plain response.
      */
-	@Path("findall")
     @GET
+    @Path("findall")
     @RolesAllowed("manager")
-    @Produces(MediaType.APPLICATION_XML)
     public ArrayList<User> getAll() {
 
 		IUserService ser = new UserSerivce(new UserRepository());		
 		return ser.findAll();
 	
     }
-	
-	@Path("getuser")
-    @GET
-    @RolesAllowed("user")
-    @Produces(MediaType.APPLICATION_XML)
-    public User getUser() {
 
-		IUserService ser = new UserSerivce(new UserRepository());		
-		
-		User result = ser.findAll().get(0);
-		
-		return result;
+    @GET
+	@Path("getuser")
+    @RolesAllowed("manager")
+    public RestrictedEntity getUser() {
+
+    	return RestrictedEntity.instance();
 	
     }
 }
