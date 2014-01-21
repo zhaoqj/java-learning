@@ -32,7 +32,6 @@ public class UserResource {
      */
     @GET
     @Path("findall")
-    @RolesAllowed("manager")
     public ArrayList<User> getAll() {
 
 		IUserService ser = new UserSerivce(new UserRepository());		

@@ -15,7 +15,6 @@ public class UserRepository implements IUserRepository {
 		super();
 		final User us1= new User();
 		us1.setUserName("Jack");
-		
 		Calendar time =  Calendar.getInstance();
 		
 		us1.setBrithday(time.getTime());
